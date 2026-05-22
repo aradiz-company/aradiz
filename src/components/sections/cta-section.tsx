@@ -49,7 +49,7 @@ export function CTASection({
               src="/images/oceano.png"
               alt="Fondo de océano profundo"
               fill
-              className="object-cover transition-transform duration-[10s] ease-out group-hover:scale-105"
+              className="object-cover object-[center_30%] transition-transform duration-[10s] ease-out group-hover:scale-105"
               priority
             />
             {/* Overlay to ensure legibility */}

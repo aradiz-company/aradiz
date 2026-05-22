@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu } from 'lucide-react';
@@ -26,16 +27,18 @@ export function Navbar() {
                 : "bg-transparent"
                 } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
         >
-            <nav className={`container mx-auto flex transition-all duration-300 items-center justify-between px-4 md:px-6 ${isScrolled ? "h-16" : "h-20"
+            <nav className={`mx-auto flex transition-all duration-300 items-center justify-between px-4 md:px-6 ${isScrolled ? "h-16" : "h-20"
                 }`}>
                 {/* Logo */}
-                <Link href="/" className="flex flex-col leading-none">
-                    <span className="text-2xl font-bold tracking-tighter text-primary">
-                        aradiz
-                    </span>
-                    <span className="text-[10px] font-medium tracking-[0.2em] text-foreground/80 uppercase">
-                        Grupo Corporativo
-                    </span>
+                <Link href="/" className="flex items-center leading-none">
+                    <Image
+                        src="/images/logo.png"
+                        alt="Aradiz"
+                        width={160}
+                        height={48}
+                        className="h-35 w-auto -translate-x-5"
+                        priority
+                    />
                 </Link>
 
                 {/* Desktop Navigation */}

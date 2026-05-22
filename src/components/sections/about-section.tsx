@@ -37,17 +37,27 @@ export function AboutSection() {
 
               <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  En aradiz nos especializamos en la fabricación, ejecución e
-                  instalación de soluciones a medida para proyectos de interior
-                  y obra. Trabajamos con empresas, estudios de arquitectura,
-                  constructoras y desarrolladores inmobiliarios que buscan un
-                  socio confiable para la ejecución técnica de sus proyectos.
-                </p>
-                <p>
-                  Nuestro enfoque está en el cumplimiento técnico, la precisión
-                  y la eficiencia, entregando resultados que cumplen con las
-                  especificaciones más exigentes del mercado B2B.
-                </p>
+                    En aradiz convertimos las especificaciones técnicas de
+                    nuestros clientes en resultados concretos. Nuestra
+                    especialidad es la ejecución profesional — fabricamos e
+                    instalamos con precisión, dentro de los plazos y estándares
+                    acordados.
+                  </p>
+                  <p>
+                    Nuestro enfoque está en la{" "}
+                    <strong className="text-foreground">
+                      fabricación e instalación
+                    </strong>{" "}
+                    de cortinas técnicas, mobiliario a medida en melamina,
+                    sistemas de vidrio y otras soluciones para proyectos
+                    corporativos y residenciales.
+                  </p>
+                  <p>
+                    Entendemos las necesidades del mercado B2B y nos
+                    posicionamos como un socio confiable para la ejecución
+                    técnica de proyectos que demandan precisión, profesionalismo
+                    y resultados garantizados.
+                  </p>
               </div>
             </div>
           </motion.div>
