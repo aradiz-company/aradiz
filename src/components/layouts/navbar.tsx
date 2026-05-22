@@ -36,7 +36,7 @@ export function Navbar() {
                         alt="Aradiz"
                         width={160}
                         height={48}
-                        className="h-35 w-auto -translate-x-5"
+                        className="h-6 w-auto"
                         priority
                     />
                 </Link>
