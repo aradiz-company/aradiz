@@ -53,8 +53,7 @@ export function ServicesSection() {
                     </h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto">
                         Ofrecemos servicios especializados con enfoque en ejecución,
-                        precisión y cumplimiento técnico para proyectos corporativos y de
-                        obra.
+                        precisión y cumplimiento técnico para proyectos corporativos y residenciales.
                     </p>
                 </motion.div>
 

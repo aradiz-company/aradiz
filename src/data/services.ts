@@ -21,7 +21,7 @@ export const services = [
         title: "Cortinas Técnicas",
         description: "Soluciones funcionales para control de luz y privacidad",
         image: "/images/services/cortinas_tecnicas.png",
-        fullDescription: "Fabricación e instalación de sistemas de cortinas técnicas para espacios corporativos y comerciales. Ofrecemos cortinas roller, panel screen, persianas verticales y horizontales con acabados profesionales y materiales de alta durabilidad.",
+        fullDescription: "Fabricación e instalación de sistemas de cortinas técnicas para espacios corporativos y residenciales. Ofrecemos cortinas roller, panel screen, persianas verticales y horizontales con acabados profesionales y materiales de alta durabilidad.",
         features: [
             "Cortinas roller blackout y sunscreen",
             "Sistemas motorizados y automatizados",

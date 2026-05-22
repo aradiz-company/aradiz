@@ -1,4 +1,4 @@
-import { Navbar, Footer, WhatsAppButton, GoogleAnalytics, SplashScreen } from "@/components/layouts";
+import { Navbar, Footer, WhatsAppButton, GoogleAnalytics, SplashScreen, CTAPopup } from "@/components/layouts";
 
 export default function PublicLayout({
     children,
@@ -11,6 +11,7 @@ export default function PublicLayout({
             <main className="flex-1">{children}</main>
             <Footer />
             <WhatsAppButton />
+            <CTAPopup />
             <GoogleAnalytics />
         </SplashScreen>
     );

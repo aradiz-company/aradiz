@@ -10,28 +10,28 @@ import { useState, useEffect, useCallback } from "react";
 // Slides del carrusel — cada uno tiene imagen y titular propio
 const slides = [
   {
-    image: "/images/hero-background-2.png",
+    image: "/images/ChatGPT Image 21 may 2026, 05_58_15 p.m.png",
     prefix: "Ejecución profesional de",
     highlight: "soluciones a medida",
     suffix: "para proyectos residenciales y comerciales",
   },
   {
-    image: "/images/hero-background-3.png",
+    image: "/images/Gemini_Generated_Image_1rcun21rcun21rcu.png",
     prefix: "Fabricación e instalación de",
     highlight: "mobiliario exclusivo",
     suffix: "que transforma cada rincón de tu espacio",
   },
   {
-    image: "/images/hero-background-4.png",
+    image: "/images/Gemini_Generated_Image_uwlq3quwlq3quwlq.png",
     prefix: "Control solar y confort térmico con",
     highlight: "cortinas técnicas",
     suffix: "de alta precisión y elegancia",
   },
   {
-    image: "/images/hero-background-5.png",
+    image: "/images/ChatGPT Image 21 may 2026, 04_30_46 p.m.png",
     prefix: "Arquitectura transparente con",
     highlight: "sistemas de vidrio",
-    suffix: "templado para espacios modernos y seguros",
+    suffix: "para espacios modernos y seguros",
   },
 ];
 
@@ -118,13 +118,13 @@ export function HeroSection() {
           transition={
             isTransitioning
               ? {
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 50,
-                }
+                type: "spring",
+                stiffness: 100,
+                damping: 50,
+              }
               : {
-                  duration: 0, // Salto instantáneo
-                }
+                duration: 0, // Salto instantáneo
+              }
           }
           onAnimationComplete={handleAnimationComplete}
         >
@@ -148,15 +148,15 @@ export function HeroSection() {
             </div>
           ))}
         </motion.div>
-        <div className="absolute inset-0 bg-linear-to-r from-background via-background/40 to-transparent" />
-        <div className="absolute inset-0 bg-linear-to-b from-background via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-background/90 via-transparent to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-1/2 bg-linear-to-b from-background/90 via-transparent to-transparent" />
       </div>
 
       {/* Contenido overlay - separado del carrusel, siempre 100vw */}
       <div className="absolute inset-0 z-20 pointer-events-none">
-        <div className="container mx-auto h-full px-4 md:px-6 relative flex flex-col justify-center items-start">
+        <div className="mx-auto h-full px-4 md:px-6 relative flex flex-col justify-end items-start pb-16">
           {/* Contenido de texto */}
-          <div className="max-w-2xl pointer-events-auto">
+          <div className="max-w-md 2xl:max-w-xl pointer-events-auto">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={currentActiveIndex}
@@ -164,7 +164,7 @@ export function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="text-5xl md:text-7xl font-extrabold tracking-tighter text-foreground mb-8 leading-[1.1]"
+                className="text-5xl 2xl:text-7xl font-extrabold tracking-tighter text-foreground mb-8 leading-[1.1]"
               >
                 {slides[currentActiveIndex].prefix}{" "}
                 <span className="text-primary">
@@ -174,7 +174,7 @@ export function HeroSection() {
               </motion.h1>
             </AnimatePresence>
 
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -182,7 +182,7 @@ export function HeroSection() {
               <FancyButton asChild variant="dark" showKeys={false}>
                 <Link href="/proyectos">Ver Proyectos</Link>
               </FancyButton>
-            </motion.div>
+            </motion.div> */}
           </div>
 
           {/* Indicadores de slides */}
@@ -191,11 +191,10 @@ export function HeroSection() {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentActiveIndex
-                    ? "w-8 bg-primary"
-                    : "w-2 bg-foreground/30 hover:bg-foreground/50"
-                }`}
+                className={`h-2 rounded-full transition-all duration-300 ${index === currentActiveIndex
+                  ? "w-8 bg-primary"
+                  : "w-2 bg-foreground/30 hover:bg-foreground/50"
+                  }`}
                 aria-label={`Ir a imagen ${index + 1}`}
               />
             ))}

@@ -26,7 +26,11 @@ export default function AboutPage() {
       <PageHeroSection
         title="Sobre nosotros"
         highlightedText="nosotros"
-        description="Empresa especializada en la fabricación, ejecución e instalación de soluciones a medida para proyectos residenciales y comerciales. Nos enfocamos en el cumplimiento técnico y la eficiencia, trabajando con empresas, estudios de arquitectura, constructoras y desarrolladores inmobiliarios."
+        description="Somos una empresa especializada en la fabricación, ejecución e instalación de soluciones a medida para proyectos residenciales y comerciales. En aradiz convertimos las especificaciones técnicas de
+                    nuestros clientes en resultados concretos. Nuestra
+                    especialidad es la ejecución profesional — fabricamos e
+                    instalamos con precisión, dentro de los plazos y estándares
+                    acordados."
       />
 
       {/* Section 02 - Nuestra forma de trabajo */}
@@ -56,13 +60,7 @@ export default function AboutPage() {
                 </h2>
 
                 <div className="space-y-4 text-base md:text-lg text-gray-300 leading-relaxed">
-                  <p>
-                    En aradiz convertimos las especificaciones técnicas de
-                    nuestros clientes en resultados concretos. Nuestra
-                    especialidad es la ejecución profesional — fabricamos e
-                    instalamos con precisión, dentro de los plazos y estándares
-                    acordados.
-                  </p>
+                  
                   <p>
                     Nuestro enfoque está en la{" "}
                     <strong className="text-white">
@@ -70,7 +68,7 @@ export default function AboutPage() {
                     </strong>{" "}
                     de cortinas técnicas, mobiliario a medida en melamina,
                     sistemas de vidrio y otras soluciones para proyectos
-                    corporativos y de obra.
+                    corporativos y residenciales.
                   </p>
                   <p>
                     Entendemos las necesidades del mercado B2B y nos
@@ -98,7 +96,7 @@ export default function AboutPage() {
 
       {/* Section 05 - Cómo trabajamos (antes 'Nuestros Valores') */}
       <ValuesSection
-        title="Como trabajamos"
+        title="Cómo trabajamos"
         description="Principios que guian nuestra operacion diaria y garantizan la satisfaccion de nuestros clientes."
         values={values}
         className="py-16 md:py-24 bg-background"
