@@ -1,34 +1,34 @@
 "use client";
 
-import Link from "next/link";
+// import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { FancyButton } from "@/components/shared/buttons/fancy-button";
+// import { FancyButton } from "@/components/shared/buttons/fancy-button";
 
 import { useState, useEffect, useCallback } from "react";
 
 // Slides del carrusel — cada uno tiene imagen y titular propio
 const slides = [
   {
-    image: "/images/ChatGPT Image 21 may 2026, 05_58_15 p.m.png",
+    image: "/images/slide1.png",
     prefix: "Ejecución profesional de",
     highlight: "soluciones a medida",
     suffix: "para proyectos residenciales y comerciales",
   },
   {
-    image: "/images/Gemini_Generated_Image_1rcun21rcun21rcu.png",
+    image: "/images/slide2.png",
     prefix: "Fabricación e instalación de",
     highlight: "mobiliario exclusivo",
     suffix: "que transforma cada rincón de tu espacio",
   },
   {
-    image: "/images/Gemini_Generated_Image_uwlq3quwlq3quwlq.png",
+    image: "/images/slide3.png",
     prefix: "Control solar y confort térmico con",
     highlight: "cortinas técnicas",
     suffix: "de alta precisión y elegancia",
   },
   {
-    image: "/images/ChatGPT Image 21 may 2026, 04_30_46 p.m.png",
+    image: "/images/slide4.png",
     prefix: "Arquitectura transparente con",
     highlight: "sistemas de vidrio",
     suffix: "para espacios modernos y seguros",
