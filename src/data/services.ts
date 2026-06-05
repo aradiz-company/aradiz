@@ -4,7 +4,7 @@ export const services = [
         icon: "Armchair",
         title: "Mobiliario a Medida",
         description: "Fabricación de mobiliario diseñado para cada proyecto",
-        image: "/images/services/muebleria_medida.png",
+        image: "/images/services/service-mobiliario-melamina.png",
         fullDescription: "Diseño y fabricación de mobiliario corporativo en melamina de alta calidad. Creamos soluciones a medida para oficinas, recepción, áreas comunes y espacios comerciales con acabados profesionales y funcionalidad óptima.",
         features: [
             "Mobiliario de oficina y recepción",
@@ -20,7 +20,7 @@ export const services = [
         icon: "Blinds",
         title: "Cortinas Técnicas",
         description: "Soluciones funcionales para control de luz y privacidad",
-        image: "/images/services/cortinas_tecnicas.png",
+        image: "/images/services/service-cortinas-rollers.png",
         fullDescription: "Fabricación e instalación de sistemas de cortinas técnicas para espacios corporativos y residenciales. Ofrecemos cortinas roller, panel screen, persianas verticales y horizontales con acabados profesionales y materiales de alta durabilidad.",
         features: [
             "Cortinas roller blackout y sunscreen",
@@ -36,7 +36,7 @@ export const services = [
         icon: "PanelTop",
         title: "Sistemas de Vidrio",
         description: "Instalación de sistemas de vidrio para obras",
-        image: "/images/services/sistemas_vidrio.png",
+        image: "/images/services/service-vidrio-fachada.png",
         fullDescription: "Instalación profesional de sistemas de vidrio templado y laminado para divisiones, mamparas, puertas y acabados arquitectónicos. Trabajamos con especificaciones técnicas precisas para proyectos de construcción y remodelación.",
         features: [
             "Mamparas y divisiones de oficina",
@@ -52,7 +52,7 @@ export const services = [
         icon: "Wrench",
         title: "Instalación Profesional",
         description: "Ejecución técnica con precisión y cumplimiento",
-        image: "/images/services/instalacion_profesional.png",
+        image: "/images/services/service-instalacion-collage.jpg",
         fullDescription: "Servicio de instalación profesional para todos nuestros productos. Contamos con personal técnico capacitado que garantiza la correcta ejecución de cada proyecto, cumpliendo con plazos y especificaciones técnicas.",
         features: [
             "Personal técnico especializado",

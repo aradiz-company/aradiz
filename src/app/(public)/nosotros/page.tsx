@@ -4,7 +4,6 @@ import {
   PageHeroSection,
   ValuesSection,
   FeatureListSection,
-  CTASection,
   MissionVisionSection,
 } from "@/components/sections";
 import {
@@ -40,7 +39,7 @@ export default function AboutPage() {
           <div className="relative h-[750px] md:h-[700px] xl:h-[600px] w-full">
             <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-secondary/20 to-accent/20">
               <Image
-                src="/images/about/about-us.jpg"
+                src="/images/about/about-work-team.png"
                 alt="Equipo de aradiz trabajando en proyecto"
                 fill
                 className="object-cover"
@@ -121,8 +120,6 @@ export default function AboutPage() {
         className="py-16 md:py-24 bg-card"
       />
 
-      {/* Section 08 - CTA Final */}
-      <CTASection />
     </>
   );
 }

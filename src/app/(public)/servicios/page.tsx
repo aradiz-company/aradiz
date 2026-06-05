@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle } from "lucide-react";
 import { FancyButton } from "@/components/shared/buttons/fancy-button";
-import { PageHeroSection, CTASection } from "@/components/sections";
+import { PageHeroSection } from "@/components/sections";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
@@ -89,10 +89,6 @@ export default function ServicesPage() {
                 );
             })}
 
-            <CTASection
-                title="¿Necesitas una solución a medida?"
-                description="Contáctanos para una consulta personalizada. Analizamos tus necesidades y te ofrecemos la mejor solución técnica."
-            />
         </>
     );
 }

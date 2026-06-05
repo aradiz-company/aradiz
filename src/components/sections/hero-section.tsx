@@ -10,25 +10,25 @@ import { useState, useEffect, useCallback } from "react";
 // Slides del carrusel — cada uno tiene imagen y titular propio
 const slides = [
   {
-    image: "/images/slide1.png",
+    image: "/images/home/hero-slide-1.png",
     prefix: "Ejecución profesional de",
     highlight: "soluciones a medida",
     suffix: "para proyectos residenciales y comerciales",
   },
   {
-    image: "/images/slide2.png",
+    image: "/images/home/hero-slide-2.png",
     prefix: "Fabricación e instalación de",
     highlight: "mobiliario exclusivo",
     suffix: "que transforma cada rincón de tu espacio",
   },
   {
-    image: "/images/slide3.png",
+    image: "/images/home/hero-slide-3.png",
     prefix: "Control solar y confort térmico con",
     highlight: "cortinas técnicas",
     suffix: "de alta precisión y elegancia",
   },
   {
-    image: "/images/slide4.png",
+    image: "/images/home/hero-slide-4.png",
     prefix: "Arquitectura transparente con",
     highlight: "sistemas de vidrio",
     suffix: "para espacios modernos y seguros",

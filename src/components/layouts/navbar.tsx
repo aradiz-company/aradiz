@@ -32,11 +32,11 @@ export function Navbar() {
                 {/* Logo */}
                 <Link href="/" className="flex items-center leading-none">
                     <Image
-                        src="/images/logo.png"
+                        src="/images/brand/logo.svg"
                         alt="Aradiz"
-                        width={160}
+                        width={140}
                         height={48}
-                        className="h-6 w-auto"
+                        className="h-8 w-auto"
                         priority
                     />
                 </Link>

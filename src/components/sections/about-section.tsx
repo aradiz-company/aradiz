@@ -10,7 +10,7 @@ export function AboutSection() {
         {/* Image Side - Takes full width */}
         <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-secondary/10 to-accent/20">
           <Image
-            src="/images/about/about-us.jpeg"
+            src="/images/home/about-team-home.jpg"
             alt="Sobre aradiz"
             fill
             className="object-cover"
