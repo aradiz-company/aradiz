@@ -32,7 +32,7 @@ export function CTASection() {
   };
 
   return (
-    <div className="w-full relative flex items-center justify-center group z-10">
+    <div className="w-full relative flex items-center justify-center group z-10 py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -71,7 +71,7 @@ export function CTASection() {
             <Button
               asChild
               size="lg"
-              className="h-14 px-10 rounded-full text-base font-bold tracking-wider transition-all hover:scale-105 duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] bg-white text-primary hover:bg-white/90 border border-white/20 group"
+              className="h-14 px-10 rounded-full text-base font-bold tracking-wider transition-all hover:scale-105 duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] bg-white text-secondary hover:bg-white/90 border border-white/20 group"
             >
               <Link href="/contacto" onClick={handleContactClick}>
                 Inicia tu proyecto hoy

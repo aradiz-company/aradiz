@@ -20,9 +20,9 @@ function ArchitecturalGrid() {
       className="absolute top-0 right-0 h-full w-full max-w-[50%] pointer-events-none hidden lg:block"
       aria-hidden="true"
     >
-      {/* Subtle gradient masks so it fades out towards the left and bottom to blend with the background */}
-      <div className="absolute inset-0 bg-linear-to-l from-transparent via-background/50 to-background z-10" />
-      <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent z-10" />
+      {/* Subtle gradient masks so it fades out towards the left, right, and bottom to blend with the background */}
+      <div className="absolute inset-0 bg-linear-to-r from-background via-transparent to-background z-10" />
+      <div className="absolute inset-0 bg-linear-to-b from-background via-transparent to-transparent z-10" />
 
       <svg
         width="100%"
@@ -42,7 +42,7 @@ function ArchitecturalGrid() {
           strokeWidth="0.5"
           className="stroke-(--aradiz-primary)/10"
         />
-        
+
         {/* Structural bold lines (Isometric/Perspective feel) */}
         <motion.path
           initial={{ pathLength: 0 }}
@@ -54,8 +54,14 @@ function ArchitecturalGrid() {
 
         {/* Nodes / intersections */}
         {[
-          [120, 80], [480, 80], [480, 320], [120, 320],
-          [200, 160], [560, 160], [560, 400], [200, 400]
+          [120, 80],
+          [480, 80],
+          [480, 320],
+          [120, 320],
+          [200, 160],
+          [560, 160],
+          [560, 400],
+          [200, 400],
         ].map(([cx, cy], i) => (
           <motion.circle
             key={i}
@@ -101,14 +107,17 @@ export function PageHeroSection({
     return (
       <>
         {parts[0]}
-        <span className="text-(--aradiz-primary)">{highlightedText}</span>
+        <span className="text-primary">{highlightedText}</span>
         {parts[1]}
       </>
     );
   };
 
   return (
-    <section id={id} className={`relative py-20 bg-background overflow-hidden ${className}`}>
+    <section
+      id={id}
+      className={`relative py-20 bg-background overflow-hidden ${className}`}
+    >
       <ArchitecturalGrid />
       <div className="container mx-auto px-4 md:px-6 relative z-20">
         <motion.div

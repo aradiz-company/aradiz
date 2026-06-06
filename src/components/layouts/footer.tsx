@@ -11,7 +11,7 @@ export function Footer() {
 
   return (
     <>
-      <footer className="relative bg-black text-background overflow-hidden flex flex-col h-screen max-h-screen">
+      <footer className="relative bg-black text-background overflow-hidden flex flex-col min-h-screen">
         {/* Shared Background for CTA and Footer */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <Image
@@ -26,7 +26,7 @@ export function Footer() {
         </div>
 
         {/* Global CTA Section - Flex to center it vertically */}
-        <div className="flex-1 flex flex-col justify-center relative z-10">
+        <div className="flex-1 flex flex-col justify-center relative z-10 border-b border-white/10">
           <CTASection />
         </div>
 
@@ -150,11 +150,11 @@ export function Footer() {
           <Separator className="my-8 bg-background/10" />
 
           {/* Bottom Bar */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-background/60">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-sm text-background/60">
             <p>
               © {currentYear} {siteConfig.name}. Todos los derechos reservados.
             </p>
-            <div className="flex gap-6">
+            <div className="flex flex-wrap gap-4 md:gap-6">
               <Link
                 href="/privacidad"
                 className="hover:text-background transition-colors"

@@ -148,7 +148,7 @@ export default async function ProjectsPage() {
               })()}
             </div>
           ) : (
-            <div className="flex flex-col w-full pb-2 bg-foreground">
+            <div className="flex flex-col w-full bg-foreground pb-12">
               {/* Full-width Hero Banner for Empty State */}
               <div className="group relative w-full min-h-[500px] md:min-h-[800px] flex items-center justify-center overflow-hidden bg-black">
                 <Image
@@ -160,7 +160,7 @@ export default async function ProjectsPage() {
                 />
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-foreground to-transparent" />
 
-                <div className="relative z-10 text-center max-w-4xl mx-auto px-6 mt-12">
+                <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
                   <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight drop-shadow-xl">
                     Visiones en proceso de <br className="hidden md:block" />{" "}
                     transformación.
