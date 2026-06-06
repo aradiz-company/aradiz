@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { siteConfig } from "@/config/site";
-import { PageHeroSection, ContactFormSection, CTASection } from "@/components/sections";
+import { PageHeroSection, ContactFormSection } from "@/components/sections";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -110,10 +110,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <CTASection
-        title="Trabajemos juntos en tu próximo proyecto"
-        description="Contáctanos para conversar sobre cómo podemos ayudarte a ejecutar tu proyecto con la calidad y profesionalismo que necesitas."
-      />
     </>
   );
 }

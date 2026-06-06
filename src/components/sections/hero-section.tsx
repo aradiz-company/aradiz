@@ -10,25 +10,25 @@ import { useState, useEffect, useCallback } from "react";
 // Slides del carrusel — cada uno tiene imagen y titular propio
 const slides = [
   {
-    image: "/images/slide1.png",
+    image: "/images/home/hero-slide-1.png",
     prefix: "Ejecución profesional de",
     highlight: "soluciones a medida",
     suffix: "para proyectos residenciales y comerciales",
   },
   {
-    image: "/images/slide2.png",
+    image: "/images/home/hero-slide-2.png",
     prefix: "Fabricación e instalación de",
     highlight: "mobiliario exclusivo",
     suffix: "que transforma cada rincón de tu espacio",
   },
   {
-    image: "/images/slide3.png",
+    image: "/images/home/hero-slide-3.png",
     prefix: "Control solar y confort térmico con",
     highlight: "cortinas técnicas",
     suffix: "de alta precisión y elegancia",
   },
   {
-    image: "/images/slide4.png",
+    image: "/images/home/hero-slide-4.png",
     prefix: "Arquitectura transparente con",
     highlight: "sistemas de vidrio",
     suffix: "para espacios modernos y seguros",
@@ -118,13 +118,13 @@ export function HeroSection() {
           transition={
             isTransitioning
               ? {
-                type: "spring",
-                stiffness: 100,
-                damping: 50,
-              }
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 50,
+                }
               : {
-                duration: 0, // Salto instantáneo
-              }
+                  duration: 0, // Salto instantáneo
+                }
           }
           onAnimationComplete={handleAnimationComplete}
         >
@@ -167,7 +167,7 @@ export function HeroSection() {
                 className="text-5xl 2xl:text-7xl font-extrabold tracking-tighter text-foreground mb-8 leading-[1.1]"
               >
                 {slides[currentActiveIndex].prefix}{" "}
-                <span className="text-primary">
+                <span className="text-secondary/90">
                   {slides[currentActiveIndex].highlight}
                 </span>{" "}
                 {slides[currentActiveIndex].suffix}
@@ -191,10 +191,11 @@ export function HeroSection() {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${index === currentActiveIndex
-                  ? "w-8 bg-primary"
-                  : "w-2 bg-foreground/30 hover:bg-foreground/50"
-                  }`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === currentActiveIndex
+                    ? "w-8 bg-primary"
+                    : "w-2 bg-foreground/30 hover:bg-foreground/50"
+                }`}
                 aria-label={`Ir a imagen ${index + 1}`}
               />
             ))}

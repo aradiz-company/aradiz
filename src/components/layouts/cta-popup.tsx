@@ -58,7 +58,7 @@ export function CTAPopup() {
           {/* Fondo de Océano similar al CTA Section */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/oceano.png"
+              src="/images/common/bg-ocean.png"
               alt="Fondo de océano profundo"
               fill
               className="object-cover transition-transform duration-[10s] ease-out group-hover:scale-105"

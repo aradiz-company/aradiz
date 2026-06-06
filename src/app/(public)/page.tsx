@@ -4,7 +4,6 @@ import {
   HeroSection,
   ServicesSection,
   AboutSection,
-  CTASection,
 } from "@/components/sections";
 
 export const metadata: Metadata = {
@@ -18,7 +17,6 @@ export default function HomePage() {
       <HeroSection />
       <ServicesSection />
       <AboutSection />
-      <CTASection />
     </>
   );
 }
