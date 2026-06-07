@@ -8,3 +8,5 @@ export { ValuesSection } from "./values-section";
 export { FeatureListSection } from "./feature-list-section";
 export { ContactFormSection } from "./contact-form-section";
 export { MissionVisionSection } from "./mission-vision-section";
+export { SplitSection } from "./split-section";
+export { OverlaySection } from "./overlay-section";

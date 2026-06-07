@@ -24,11 +24,20 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} | ${siteConfig.tagline}`,
     description: siteConfig.description,
     siteName: siteConfig.name,
+    images: [
+      {
+        url: "/images/brand/logo-banner.png",
+        width: 1200,
+        height: 630,
+        alt: "aradiz | Acabados Integrales",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} | ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: ["/images/brand/logo-banner.png"],
   },
   robots: {
     index: true,
