@@ -5,7 +5,7 @@
 
 export const siteConfig = {
   name: "aradiz",
-  tagline: "Grupo Corporativo",
+  tagline: "Acabados Integrales",
   description:
     "Ejecución profesional de soluciones a medida para proyectos residenciales y comerciales. Desde fabricación hasta instalación, con foco en cumplimiento técnico y eficiencia.",
   url: "https://aradiz.com",
