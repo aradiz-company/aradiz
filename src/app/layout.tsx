@@ -39,6 +39,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: ["/images/brand/logo-banner.png"],
   },
+  metadataBase: new URL(siteConfig.url),
   robots: {
     index: true,
     follow: true,
