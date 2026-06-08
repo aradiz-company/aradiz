@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: "/images/brand/logo-banner.png",
+        url: "/images/brand/logo-banner2.png",
         width: 1200,
         height: 630,
         alt: "aradiz | Acabados Integrales",
