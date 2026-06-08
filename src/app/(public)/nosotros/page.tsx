@@ -70,7 +70,7 @@ export default function AboutPage() {
         title="Para Quiénes Trabajamos"
         description="Trabajamos con empresas y personas que exigen ejecucion de alto nivel."
         values={targetAudience}
-        className="py-16 md:py-24 bg-card"
+        className="py-16 bg-card"
       />
 
     </>
