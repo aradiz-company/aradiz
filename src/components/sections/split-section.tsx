@@ -53,7 +53,7 @@ export function SplitSection({
             <div className="w-full flex flex-col justify-center p-8 py-12 md:p-12 lg:p-16 xl:p-24">
               {/* Content Wrapper */}
               <div className="flex flex-col gap-12">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold leading-tight">
                   {title.split(" ").map((word, idx, arr) =>
                     idx === arr.length - 1 ? (
                       <span

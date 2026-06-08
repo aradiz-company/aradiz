@@ -18,6 +18,7 @@ export default function ServicesPage() {
                 title="Servicios profesionales para proyectos de interior y obra"
                 highlightedText="interior y obra"
                 description="Ofrecemos servicios especializados con enfoque en ejecución, precisión y cumplimiento técnico para proyectos corporativos."
+                className="max-w-4xl"
             />
 
             {/* Services Details */}

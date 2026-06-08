@@ -30,6 +30,7 @@ export default function AboutPage() {
                     especialidad es la ejecución profesional — fabricamos e
                     instalamos con precisión, dentro de los plazos y estándares
                     acordados."
+        className="max-w-8xl"
       />
 
 
@@ -42,7 +43,7 @@ export default function AboutPage() {
         title="Nuestros valores"
         description="Principios que definen quiénes somos y cómo construimos cada proyecto."
         values={brandValues}
-        className="py-16 md:py-24 bg-card"
+        className="py-16 bg-card"
       />
 
       {/* Section 05 - Cómo trabajamos (antes 'Nuestros Valores') */}
@@ -50,7 +51,7 @@ export default function AboutPage() {
         title="Cómo trabajamos"
         description="Principios que guian nuestra operacion diaria y garantizan la satisfaccion de nuestros clientes."
         values={values}
-        className="py-16 md:py-24 bg-background"
+        className="py-16 bg-background"
       />
 
       {/* Section 06 - ¿Por qué elegirnos? */}
@@ -58,7 +59,7 @@ export default function AboutPage() {
         title="¿Por qué elegirnos?"
         description="Características que nos diferencian en el mercado B2B"
         features={differentiators}
-        className="py-16 md:py-24 bg-foreground"
+        className="py-16 bg-foreground"
         titleClassName="text-background"
         descriptionClassName="text-gray-400"
         itemClassName="text-gray-200"
