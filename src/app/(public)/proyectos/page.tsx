@@ -24,6 +24,7 @@ export default async function ProjectsPage() {
         title="Proyectos destacados para el sector corporativo e inmobiliario."
         highlightedText="sector corporativo e inmobiliario."
         description="Desde oficinas corporativas hasta espacios comerciales, cada proyecto refleja nuestro compromiso con la calidad, el diseño y la funcionalidad."
+        className="max-w-4xl"
       />
 
       {/* Projects Grid or Empty State */}

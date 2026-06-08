@@ -17,7 +17,7 @@ export function FeatureListSection({
     title,
     description,
     features,
-    className = "py-16 md:py-24",
+    className = "py-16",
     titleClassName = "text-foreground",
     descriptionClassName = "text-muted-foreground",
     itemClassName = "text-foreground",
