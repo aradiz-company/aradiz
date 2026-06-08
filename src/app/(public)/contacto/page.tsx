@@ -43,6 +43,7 @@ export default function ContactPage() {
         title="Conversemos sobre tu proyecto"
         highlightedText="proyecto"
         description="Estamos listos para ayudarte. Completa el formulario y nos pondremos en contacto contigo a la brevedad."
+        className="max-w-3xl"
       />
 
       {/* Contact Section */}

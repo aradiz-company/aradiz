@@ -37,7 +37,7 @@ export function ValuesSection({
     title,
     description,
     values,
-    className = "py-16 md:py-24 bg-card",
+    className = "py-16 bg-card",
 }: ValuesSectionProps) {
     return (
         <section className={className}>
