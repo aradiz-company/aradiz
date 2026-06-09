@@ -116,7 +116,7 @@ export function PageHeroSection({
   return (
     <section
       id={id}
-      className={`relative py-20 bg-background overflow-hidden mt-15`}
+      className={`relative py-10 lg:py-20 bg-background overflow-hidden mt-15`}
     >
       <div className="container mx-auto px-4 md:px-6 relative z-20">
         <motion.div
@@ -125,7 +125,7 @@ export function PageHeroSection({
           transition={{ duration: 0.6 }}
           className={`${className}`}
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
+          <h1 className="text-4xl md:text-5xl 2xl:text-6xl font-bold tracking-tight text-foreground mb-6">
             {renderTitle()}
           </h1>
           <p className={`text-lg md:text-xl text-muted-foreground leading-relaxed`}>
