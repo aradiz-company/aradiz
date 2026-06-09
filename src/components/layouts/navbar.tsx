@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { FancyButton } from "@/components/shared/buttons/fancy-button";
@@ -13,6 +13,7 @@ import {
   SheetContent,
   SheetTitle,
   SheetTrigger,
+  SheetClose,
 } from "@/components/ui/sheet";
 import { useScroll } from "@/hooks/use-scroll";
 
@@ -45,7 +46,7 @@ export function Navbar() {
             alt="Aradiz"
             width={140}
             height={48}
-            className="h-8 md:h-9 w-auto"
+            className="h-10 xl:h-11 w-auto"
             priority
           />
         </Link>
@@ -91,16 +92,16 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="text-foreground hover:bg-black/5"
+              className="text-foreground hover:bg-black/5 h-12 w-12"
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-8 w-8" />
               <span className="sr-only">Abrir menú</span>
             </Button>
           </SheetTrigger>
           <SheetContent
             side="top"
             className="h-[100dvh] w-full sm:max-w-full p-0 border-none bg-background/80 backdrop-blur-2xl data-[state=closed]:duration-500 data-[state=open]:duration-700"
-            showCloseButton={true}
+            showCloseButton={false}
           >
             <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
             <div className="flex flex-col h-full bg-black/5">
@@ -115,10 +116,19 @@ export function Navbar() {
                     alt="Aradiz"
                     width={140}
                     height={48}
-                    className="h-8 w-auto"
+                    className="h-12 w-auto"
                   />
                 </Link>
-                {/* The close button is handled by SheetContent's showCloseButton now, or we can use the primitive close inside SheetContent. We'll rely on the default close button if configured correctly or add a custom one. */}
+                <SheetClose asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-foreground hover:bg-black/5 h-12 w-12"
+                  >
+                    <X className="h-8 w-8" />
+                    <span className="sr-only">Cerrar menú</span>
+                  </Button>
+                </SheetClose>
               </div>
 
               <div className="flex-1 overflow-y-auto py-12 px-6">
