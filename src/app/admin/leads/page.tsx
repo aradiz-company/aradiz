@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { collection, getDocs, query, orderBy, updateDoc, doc, deleteDoc } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -30,13 +28,13 @@ export default function LeadsPage() {
 
     const fetchLeads = async () => {
         try {
-            const q = query(collection(db, 'leads'), orderBy('createdAt', 'desc'));
-            const querySnapshot = await getDocs(q);
-            const leadsData = querySnapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-                createdAt: doc.data().createdAt?.toDate() || new Date(),
-                updatedAt: doc.data().updatedAt?.toDate() || doc.data().createdAt?.toDate() || new Date(),
+            const res = await fetch('/api/admin/leads');
+            if (!res.ok) throw new Error('Error al obtener leads');
+            const data = await res.json();
+            const leadsData = data.map((lead: any) => ({
+                ...lead,
+                createdAt: new Date(lead.createdAt),
+                updatedAt: new Date(lead.updatedAt),
             })) as Lead[];
             setLeads(leadsData);
         } catch (error) {
@@ -52,10 +50,14 @@ export default function LeadsPage() {
 
     const updateStatus = async (id: string, newStatus: Lead['status']) => {
         try {
-            await updateDoc(doc(db, 'leads', id), {
-                status: newStatus,
-                updatedAt: new Date(),
+            const res = await fetch('/api/admin/leads', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id, status: newStatus }),
             });
+            if (!res.ok) throw new Error('Error al actualizar estado');
             setLeads(leads.map(lead => lead.id === id ? { ...lead, status: newStatus } : lead));
         } catch (error) {
             console.error('Error updating lead status:', error);
@@ -66,7 +68,10 @@ export default function LeadsPage() {
         if (!leadToDelete) return;
         setSubmitting(true);
         try {
-            await deleteDoc(doc(db, 'leads', leadToDelete.id));
+            const res = await fetch(`/api/admin/leads?id=${leadToDelete.id}`, {
+                method: 'DELETE',
+            });
+            if (!res.ok) throw new Error('Error al eliminar lead');
             setLeads(leads.filter(lead => lead.id !== leadToDelete.id));
             setDeleteDialogOpen(false);
             setLeadToDelete(null);

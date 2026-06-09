@@ -1,23 +1,36 @@
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { sql, initDb } from '@/lib/db';
 import type { Project } from '@/types/project';
 
 /**
- * Fetches all projects from Firestore, ordered by the 'order' field
- * @returns Promise<Project[]> - Array of project documents
+ * Fetches all projects from Vercel Postgres, ordered by the 'order' column
+ * @returns Promise<Project[]> - Array of project objects
  */
 export async function getProjects(): Promise<Project[]> {
     try {
-        const projectsRef = collection(db, 'projects');
-        const q = query(projectsRef, orderBy('order', 'asc'));
-        const snapshot = await getDocs(q);
+        // Asegurar que las tablas estén inicializadas
+        await initDb();
 
-        return snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data(),
-        } as Project));
+        const rows = await sql`
+            SELECT id, title, category, location, year, image_url, description, featured, "order", created_at, updated_at
+            FROM projects
+            ORDER BY "order" ASC
+        `;
+
+        return rows.map(row => ({
+            id: String(row.id),
+            title: row.title,
+            category: row.category,
+            location: row.location,
+            year: row.year,
+            imageUrl: row.image_url,
+            description: row.description,
+            featured: row.featured,
+            order: row.order ?? 0,
+            createdAt: row.created_at,
+            updatedAt: row.updated_at,
+        }));
     } catch (error) {
-        console.error('Error fetching projects from Firestore:', error);
-        throw new Error('Failed to load projects');
+        console.error('Error fetching projects from Vercel Postgres:', error);
+        throw new Error('Error al cargar los proyectos desde Postgres');
     }
 }

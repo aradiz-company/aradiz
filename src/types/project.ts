@@ -4,7 +4,7 @@ export interface Project {
     category: string;
     location: string;
     year: string;
-    imageUrl: string; // Firebase Storage URL
+    imageUrl: string; // Vercel Blob URL
     description: string;
     featured?: boolean; // Optional: highlight certain projects
     order?: number; // Optional: manual ordering

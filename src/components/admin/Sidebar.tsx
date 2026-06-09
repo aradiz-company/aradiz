@@ -1,8 +1,6 @@
 'use client';
 
-import { useAuth } from '@/lib/hooks/useAuth';
-import { signOut } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { useAuth, type AuthUser } from '@/lib/hooks/useAuth';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { LayoutDashboard, Package, Mail, LogOut, Menu, X } from 'lucide-react';
@@ -15,14 +13,13 @@ const navigation = [
     { name: 'Leads', href: '/admin/leads', icon: Mail },
 ];
 
-import type { User } from 'firebase/auth';
-
 interface SidebarContentProps {
-    user: User | null;
+    user: AuthUser | null;
     pathname: string;
     handleLogout: () => Promise<void>;
     setMobileMenuOpen: (open: boolean) => void;
 }
+
 
 const SidebarContent = ({ user, pathname, handleLogout, setMobileMenuOpen }: SidebarContentProps) => (
     <>
@@ -82,7 +79,7 @@ export function Sidebar() {
 
     const handleLogout = async () => {
         try {
-            await signOut(auth);
+            await fetch('/api/admin/logout', { method: 'POST' });
             router.push('/admin/login');
         } catch (error) {
             console.error('Error signing out:', error);
