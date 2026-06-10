@@ -181,12 +181,11 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
                             </div>
 
                             {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
-                                <div className="flex justify-center my-4">
-                                    <Turnstile
-                                        siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-                                        onSuccess={(token) => setTurnstileToken(token)}
-                                    />
-                                </div>
+                                <Turnstile
+                                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                                    onSuccess={(token) => setTurnstileToken(token)}
+                                    options={{ size: "invisible" }}
+                                />
                             )}
 
                             {error && (
