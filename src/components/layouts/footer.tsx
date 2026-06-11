@@ -18,6 +18,7 @@ export function Footer() {
             src="/images/common/bg-ocean.png"
             alt="Fondo de océano profundo"
             fill
+            sizes="100vw"
             className="object-cover object-center animate-ocean-drift"
             priority
           />

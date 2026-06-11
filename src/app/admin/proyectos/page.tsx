@@ -1,9 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, writeBatch, query, orderBy } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-import { db, storage } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import { Plus, Loader2, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
@@ -97,20 +94,10 @@ export default function ProyectosPage() {
     // Fetch projects ordered by 'order' field
     const fetchProjects = async () => {
         try {
-            const q = query(collection(db, 'projects'), orderBy('order', 'asc'));
-            const querySnapshot = await getDocs(q);
-            const projectsData = querySnapshot.docs.map((doc) => {
-                const data = doc.data();
-                return {
-                    id: doc.id,
-                    ...data,
-                    order: data.order ?? 0,
-                    featured: data.featured ?? false,
-                    createdAt: data.createdAt?.toDate() || new Date(),
-                    updatedAt: data.updatedAt?.toDate() || data.createdAt?.toDate() || new Date(),
-                };
-            }) as Project[];
-            setProjects(projectsData);
+            const res = await fetch('/api/admin/projects');
+            if (!res.ok) throw new Error('Error al obtener proyectos');
+            const data = await res.json();
+            setProjects(data);
         } catch (error) {
             console.error('Error fetching projects:', error);
         } finally {
@@ -122,7 +109,7 @@ export default function ProyectosPage() {
         fetchProjects();
     }, []);
 
-    // Handle drag end - save new order to Firestore
+    // Handle drag end - save new order to Postgres
     const handleDragEnd = async (event: DragEndEvent) => {
         const { active, over } = event;
 
@@ -133,14 +120,15 @@ export default function ProyectosPage() {
             const newProjects = arrayMove(projects, oldIndex, newIndex);
             setProjects(newProjects);
 
-            // Batch update order in Firestore
             try {
-                const batch = writeBatch(db);
-                newProjects.forEach((project, index) => {
-                    const projectRef = doc(db, 'projects', project.id);
-                    batch.update(projectRef, { order: index });
+                const res = await fetch('/api/admin/projects/reorder', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ ids: newProjects.map(p => p.id) }),
                 });
-                await batch.commit();
+                if (!res.ok) throw new Error('Error al guardar el nuevo orden');
             } catch (error) {
                 console.error('Error updating order:', error);
                 // Revert on error
@@ -154,64 +142,24 @@ export default function ProyectosPage() {
         setSubmitting(true);
         try {
             const id = formData.get('id') as string | null;
-            const title = formData.get('title') as string;
-            const description = formData.get('description') as string;
-            const category = formData.get('category') as string;
-            const location = formData.get('location') as string;
-            const year = formData.get('year') as string;
-            const featured = formData.get('featured') === 'true';
-            const imageFile = formData.get('image') as File | null;
-            const currentImageUrl = formData.get('currentImageUrl') as string | null;
+            const method = id ? 'PUT' : 'POST';
 
-            let imageUrl = currentImageUrl || '';
+            const res = await fetch('/api/admin/projects', {
+                method,
+                body: formData,
+            });
 
-            // Upload image if provided
-            if (imageFile && imageFile.size > 0) {
-                // Delete old image if updating
-                if (currentImageUrl) {
-                    try {
-                        const oldImageRef = ref(storage, currentImageUrl);
-                        await deleteObject(oldImageRef);
-                    } catch (err) {
-                        console.warn('Could not delete old image:', err);
-                    }
-                }
-
-                // Upload new image
-                const imageRef = ref(storage, `projects/${Date.now()}_${imageFile.name}`);
-                await uploadBytes(imageRef, imageFile);
-                imageUrl = await getDownloadURL(imageRef);
-            }
-
-            const projectData = {
-                title,
-                description,
-                category,
-                location,
-                year,
-                imageUrl,
-                featured,
-                updatedAt: new Date(),
-            };
-
-            if (id) {
-                // Update existing project
-                await updateDoc(doc(db, 'projects', id), projectData);
-            } else {
-                // Create new project with order at end
-                await addDoc(collection(db, 'projects'), {
-                    ...projectData,
-                    order: projects.length,
-                    createdAt: new Date(),
-                });
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.error || 'Error al guardar el proyecto');
             }
 
             await fetchProjects();
             setDialogOpen(false);
             setSelectedProject(null);
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error saving project:', error);
-            alert('Error al guardar el proyecto');
+            alert(error.message || 'Error al guardar el proyecto');
         } finally {
             setSubmitting(false);
         }
@@ -223,24 +171,21 @@ export default function ProyectosPage() {
 
         setSubmitting(true);
         try {
-            // Delete image if exists
-            if (projectToDelete.imageUrl) {
-                try {
-                    const imageRef = ref(storage, projectToDelete.imageUrl);
-                    await deleteObject(imageRef);
-                } catch (err) {
-                    console.warn('Could not delete image:', err);
-                }
+            const res = await fetch(`/api/admin/projects?id=${projectToDelete.id}`, {
+                method: 'DELETE',
+            });
+
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.error || 'Error al eliminar el proyecto');
             }
 
-            // Delete project document
-            await deleteDoc(doc(db, 'projects', projectToDelete.id));
             await fetchProjects();
             setDeleteDialogOpen(false);
             setProjectToDelete(null);
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error deleting project:', error);
-            alert('Error al eliminar el proyecto');
+            alert(error.message || 'Error al eliminar el proyecto');
         } finally {
             setSubmitting(false);
         }

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 interface ContactFormSectionProps {
     className?: string;
@@ -20,6 +21,7 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
         phone: "",
         message: "",
     });
+    const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState("");
@@ -35,56 +37,33 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        // Validar que se haya resuelto el Captcha si el Site Key está configurado
+        const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+        if (turnstileSiteKey && !turnstileToken) {
+            setError("Por favor, completa la verificación de seguridad (Captcha).");
+            return;
+        }
+
         setIsSubmitting(true);
         setError("");
 
         try {
-            // Importar Firestore dinámicamente para evitar errores de SSR
-            const { db } = await import("@/lib/firebase");
-            const { collection, addDoc, Timestamp } = await import("firebase/firestore");
-
-            const now = Timestamp.now();
-            // 1. Guardar en colección leads (registro)
-            const leadRef = await addDoc(collection(db, "leads"), {
-                name: formData.name,
-                email: formData.email,
-                company: formData.company || "",
-                phone: formData.phone || "",
-                message: formData.message,
-                status: "nuevo",
-                createdAt: now,
-                updatedAt: now,
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    token: turnstileToken,
+                }),
             });
 
-            // 2. Crear documento para envío de email (la extensión MailerSend lo procesa)
-            await addDoc(collection(db, "emails"), {
-                to: [{
-                    email: process.env.NEXT_PUBLIC_MAILERSEND_TO_EMAIL,
-                    name: "Lizbeth Arana Ramos"
-                }],
-                from: {
-                    email: process.env.NEXT_PUBLIC_MAILERSEND_FROM_EMAIL,
-                    name: "Aradiz Web Form",
-                },
-                reply_to: {
-                    email: formData.email,
-                    name: formData.name
-                },
-                template_id: process.env.NEXT_PUBLIC_MAILERSEND_TEMPLATE_ID,
-                personalization: [
-                    {
-                        email: process.env.NEXT_PUBLIC_MAILERSEND_TO_EMAIL,
-                        data: {
-                            name: formData.name,
-                            email: formData.email,
-                            phone: formData.phone || "No especificado",
-                            company: formData.company || "No especificada",
-                            message: formData.message,
-                            leadId: leadRef.id,
-                        },
-                    },
-                ],
-            });
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.error || 'Error al enviar el mensaje');
+            }
 
             setIsSuccess(true);
             setFormData({
@@ -94,6 +73,7 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
                 phone: "",
                 message: "",
             });
+            setTurnstileToken(null);
 
             setTimeout(() => {
                 setIsSuccess(false);
@@ -199,6 +179,14 @@ export function ContactFormSection({ className = "" }: ContactFormSectionProps) 
                                     placeholder="Cuéntanos sobre tu proyecto..."
                                 />
                             </div>
+
+                            {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+                                <Turnstile
+                                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                                    onSuccess={(token) => setTurnstileToken(token)}
+                                    options={{ size: "invisible" }}
+                                />
+                            )}
 
                             {error && (
                                 <div className="p-4 rounded-lg bg-destructive/10 text-destructive text-sm">

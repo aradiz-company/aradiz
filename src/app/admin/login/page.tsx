@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -23,15 +21,28 @@ export default function LoginPage() {
         setLoading(true);
 
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            const res = await fetch('/api/admin/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            if (!res.ok) {
+                const data = await res.json();
+                throw new Error(data.error || 'Email o contraseña incorrectos.');
+            }
+
             router.push('/admin');
-        } catch (err) {
+        } catch (err: any) {
             console.error('Login error:', err);
-            setError('Email o contraseña incorrectos. Por favor, intenta de nuevo.');
+            setError(err.message || 'Email o contraseña incorrectos. Por favor, intenta de nuevo.');
         } finally {
             setLoading(false);
         }
     };
+
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-background p-4">

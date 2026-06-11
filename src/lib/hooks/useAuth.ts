@@ -1,36 +1,53 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { User, onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-import { auth, db } from '@/lib/firebase';
+
+export interface AuthUser {
+    email: string;
+}
 
 export function useAuth() {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<AuthUser | null>(null);
     const [isAdmin, setIsAdmin] = useState(false);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-            setUser(user);
+        let isMounted = true;
 
-            if (user) {
-                // Check if user is admin
-                try {
-                    const adminDoc = await getDoc(doc(db, 'admins', user.uid));
-                    setIsAdmin(adminDoc.exists());
-                } catch (error) {
-                    console.error('Error checking admin status:', error);
+        async function checkAuth() {
+            try {
+                const res = await fetch('/api/admin/me');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.authenticated && isMounted) {
+                        setUser({ email: data.user.email });
+                        setIsAdmin(true);
+                    } else if (isMounted) {
+                        setUser(null);
+                        setIsAdmin(false);
+                    }
+                } else if (isMounted) {
+                    setUser(null);
                     setIsAdmin(false);
                 }
-            } else {
-                setIsAdmin(false);
+            } catch (error) {
+                console.error('Error checking auth:', error);
+                if (isMounted) {
+                    setUser(null);
+                    setIsAdmin(false);
+                }
+            } finally {
+                if (isMounted) {
+                    setLoading(false);
+                }
             }
+        }
 
-            setLoading(false);
-        });
+        checkAuth();
 
-        return unsubscribe;
+        return () => {
+            isMounted = false;
+        };
     }, []);
 
     return { user, isAdmin, loading };

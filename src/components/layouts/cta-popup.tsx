@@ -61,6 +61,7 @@ export function CTAPopup() {
               src="/images/common/bg-ocean.png"
               alt="Fondo de océano profundo"
               fill
+              sizes="100vw"
               className="object-cover transition-transform duration-[10s] ease-out group-hover:scale-105"
               priority
             />
