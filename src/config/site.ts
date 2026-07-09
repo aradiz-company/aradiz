@@ -35,7 +35,7 @@ export const siteConfig = {
 
   // Redes sociales (si aplica)
   social: {
-    linkedin: "https://www.linkedin.com/in/aradiz",
+    linkedin: "https://www.linkedin.com/company/aradiz",
     instagram: "https://www.instagram.com/aradiz.group/",
     facebook: "https://www.facebook.com/aradiz",
   },
