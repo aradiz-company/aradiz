@@ -47,9 +47,12 @@ export function SplashScreen({
           {/* Animated rings container */}
           <div className="relative flex items-center justify-center w-32 h-32">
             {/* Center Icon */}
-            <img
+            <Image
               src="/images/brand/logo-icon.svg"
               alt="Aradiz Icon"
+              width={64}
+              height={64}
+              priority
               className="z-10 w-16 h-16 animate-pulse"
             />
 

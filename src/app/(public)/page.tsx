@@ -7,7 +7,9 @@ import {
 } from "@/components/sections";
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | ${siteConfig.tagline}`,
+  title: {
+    absolute: `${siteConfig.name} | ${siteConfig.tagline}`,
+  },
   description: siteConfig.description,
 };
 
