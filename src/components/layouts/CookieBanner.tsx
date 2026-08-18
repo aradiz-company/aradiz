@@ -16,7 +16,7 @@ interface CookieBannerProps {
 }
 
 export function CookieBanner({
-  privacyPolicyUrl = "/privacidad",
+  privacyPolicyUrl = "/politica-de-cookies",
   storageKey = "cookie-consent-status",
   texts = {},
 }: CookieBannerProps) {
