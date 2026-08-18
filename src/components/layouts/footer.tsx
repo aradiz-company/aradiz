@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { services } from "@/data/services";
 import { CTASection } from "@/components/sections";
+import { CookieSettingsButton } from "./CookieSettingsButton";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -168,6 +169,7 @@ export function Footer() {
               >
                 Términos de Uso
               </Link>
+              <CookieSettingsButton />
             </div>
           </div>
         </div>

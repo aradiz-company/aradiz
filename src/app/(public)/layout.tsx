@@ -1,4 +1,4 @@
-import { Navbar, Footer, WhatsAppButton, GoogleAnalytics, SplashScreen, CTAPopup } from "@/components/layouts";
+import { Navbar, Footer, WhatsAppButton, GoogleAnalyticsWrapper, CookieBanner, SplashScreen, CTAPopup } from "@/components/layouts";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -14,7 +14,8 @@ export default function PublicLayout({
             <Footer />
             <WhatsAppButton />
             <CTAPopup />
-            <GoogleAnalytics />
+            <GoogleAnalyticsWrapper gaId={process.env.NEXT_PUBLIC_GA_ID} />
+            <CookieBanner />
             <Analytics />
             <SpeedInsights />
         </SplashScreen>

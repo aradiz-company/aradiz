@@ -2,8 +2,8 @@
 
 import Script from "next/script";
 
-export function GoogleAnalytics() {
-    const gaId = process.env.NEXT_PUBLIC_GA_ID;
+export function GoogleAnalytics({ gaId: gaIdProp }: { gaId?: string } = {}) {
+    const gaId = gaIdProp || process.env.NEXT_PUBLIC_GA_ID;
 
     if (!gaId) {
         return null;
