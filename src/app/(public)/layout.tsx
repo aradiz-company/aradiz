@@ -9,11 +9,13 @@ export default function PublicLayout({
 }) {
     return (
         <SplashScreen>
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <WhatsAppButton />
-            <CTAPopup />
+            <div className="cookie-banner-blur-target flex flex-col min-h-screen flex-1">
+                <Navbar />
+                <main className="flex-1">{children}</main>
+                <Footer />
+                <WhatsAppButton />
+                <CTAPopup />
+            </div>
             <GoogleAnalyticsWrapper gaId={process.env.NEXT_PUBLIC_GA_ID} />
             <CookieBanner />
             <Analytics />
