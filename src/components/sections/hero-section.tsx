@@ -106,9 +106,9 @@ export function HeroSection() {
   }, [nextSlide]);
 
   return (
-    <section className="relative min-h-screen flex items-end justify-start overflow-hidden [--slide-width:100vw] shadow-2xl">
+    <section className="relative flex items-end justify-start overflow-hidden [--slide-width:100vw] shadow-2xl">
       {/* Carousel - solo los slides */}
-      <div className="h-screen relative z-10 overflow-hidden">
+      <div className="h-dvh relative z-10 overflow-hidden">
         {/* Track del carrusel - Contiene TODAS las imágenes duplicadas */}
         <motion.div
           className="flex h-full"
@@ -148,7 +148,7 @@ export function HeroSection() {
             </div>
           ))}
         </motion.div>
-        <div className="absolute inset-0 bg-linear-to-r from-background/90 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-background/50 lg:from-background/90 via-background/50 lg:via-transparent to-transparent" />
         <div className="absolute top-0 left-0 right-0 h-1/2 bg-linear-to-b from-background/90 via-transparent to-transparent" />
       </div>
 
@@ -164,7 +164,7 @@ export function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="text-5xl 2xl:text-7xl font-extrabold tracking-tighter text-foreground mb-8 leading-[1.1]"
+                className="text-4xl sm:text-5xl 2xl:text-7xl font-extrabold tracking-tighter text-foreground mb-8 leading-[1.1]"
               >
                 {slides[currentActiveIndex].prefix}{" "}
                 <span className="text-secondary/90">

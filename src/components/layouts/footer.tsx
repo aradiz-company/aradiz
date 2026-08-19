@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { services } from "@/data/services";
 import { CTASection } from "@/components/sections";
+import { CookieSettingsButton } from "./CookieSettingsButton";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -163,11 +164,18 @@ export function Footer() {
                 Política de Privacidad
               </Link>
               <Link
+                href="/politica-de-cookies"
+                className="hover:text-background transition-colors"
+              >
+                Política de Cookies
+              </Link>
+              <Link
                 href="/terminos"
                 className="hover:text-background transition-colors"
               >
                 Términos de Uso
               </Link>
+              <CookieSettingsButton />
             </div>
           </div>
         </div>

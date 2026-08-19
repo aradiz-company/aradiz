@@ -206,3 +206,10 @@
 /* --- Premium Button Styles Consolidation --- */
 
 /* Ripple Variant */
+
+/* --- Cookie Gating Blur --- */
+.cookie-banner-active .cookie-banner-blur-target {
+  filter: blur(8px);
+  pointer-events: none;
+  transition: filter 0.3s ease;
+}
